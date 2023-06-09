@@ -1,0 +1,33 @@
+#
+# This is the SOURCES file for building CBios libraries
+#
+TARGETNAME=CBiosInit
+TARGETTYPE=LIBRARY
+
+#
+#
+#
+#
+
+USE_MAPSYM=1
+
+#
+# setup visualC++ source browsing
+#
+BROWSERFILE=$(TARGETNAME).bsc -n
+
+
+!IFNDEF MSC_WARNING_LEVEL
+MSC_WARNING_LEVEL=/W3 /WX
+!ENDIF
+
+!IF "$(DDKBUILDENV)" == "fre" || "$(DDKBUILDENV)" == "free"
+MSC_OPTIMIZATION=$(MSC_OPTIMIZATION) /Ob2 /O1
+!endif
+
+INCLUDES=$(DDK_INC_PATH);$(WDM_INC_PATH)
+INCLUDES=$(INCLUDES);..\Device;
+
+
+
+SOURCES=CBiosInit.c

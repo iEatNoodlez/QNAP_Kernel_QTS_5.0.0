@@ -1,0 +1,7 @@
+config DRM_ZX
+	tristate "Zhaoxin Graphics"
+	depends on DRM
+	depends on X86 && PCI
+	select DRM_KMS_HELPER
+	help
+	  Choose this option to enable DRM on Zhaoxin Graphic functions.

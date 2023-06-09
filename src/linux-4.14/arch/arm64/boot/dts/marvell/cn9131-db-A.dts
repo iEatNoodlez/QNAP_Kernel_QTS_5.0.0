@@ -1,0 +1,62 @@
+/*
+ * Copyright (C) 2018 Marvell International Ltd.
+ *
+ * SPDX-License-Identifier:    GPL-2.0
+ * https://spdx.org/licenses
+ */
+
+#include "cn9130-db-A.dts"
+#include "cn9131-db.dtsi"
+
+/ {
+	model = "Marvell CN9131 development board (CP NOR) setup(A)";
+	compatible = "marvell,cn9131-db-A", "marvell,armada-ap807-quad",
+		     "marvell,armada-ap807";
+};
+
+&cp1_ethernet {
+	status = "okay";
+};
+
+&cp1_eth0 {
+	status = "okay";
+	phy-mode = "10gbase-kr";
+	/* Generic PHY, providing serdes lanes */
+	phys = <&cp1_comphy4 0>;
+	managed = "in-band-status";
+	sfp = <&cp1_sfp_eth1>;
+	led-active = <156 1>; /* NUM Active_low */
+	led-link-10G = <157 1>;
+	led-link-1G = <158 1>;
+/*
+	comphy_settings_num = <2>;
+	comphy_settings = <0x834 0x494E>,
+						 <0xC40 0xF2BF>;
+*/
+};
+
+&cp1_pcie2 {
+	status = "okay";
+	num-lanes = <1>;
+	num-viewport = <8>;
+	/* Generic PHY, providing serdes lanes */
+	phys = <&cp1_comphy5 2>;
+};
+
+&cp1_qnap_comphy_settings {
+	status = "okay";
+	comphy_settings =
+		/* SATA */
+		<0xF4122844 0x4958>,
+		<0xF4122C50 0xf0fe>,
+		<0xF412283C 0x4958>,
+		<0xF4122834 0x4958>,
+		/* PCIE */
+		<0xF4125844 0x0CF2>,
+		/* USB3 */
+		<0xF412183C 0x2CF2>;
+		/* SFP */
+		/* <0xF4124834 0x494E>, */
+		/* <0xF4124C40 0xF2BF>; */
+};
+

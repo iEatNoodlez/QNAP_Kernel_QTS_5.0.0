@@ -1,0 +1,22 @@
+#
+# QNAP NAS Driver
+#
+
+menuconfig QNAP_NASDRIVER
+	bool "QNAP NAS Drivers Support"
+
+if QNAP_NASDRIVER
+
+source "$(QND_PATH)/Kconfig"
+
+config QND_INTEL_LPC_WA
+	bool "Intel Braswell/ApolloLake LPC workaround"
+	depends on X86_64
+	default n
+
+config QND_RTC_RX8900_SUPPORT
+        tristate "Support RTC RX8900"
+        depends on X86_64 || X86
+        default nk
+
+endif

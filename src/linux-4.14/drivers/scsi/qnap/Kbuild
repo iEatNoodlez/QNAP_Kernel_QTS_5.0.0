@@ -1,0 +1,15 @@
+#
+# Kbuild for the QNAP VirtualJBOD
+#
+# Copyright (C) 20R1 QNAP Inc.  All rights reserved.
+#
+# Authors:
+#   QNAP iSCSI Team
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2
+#
+
+obj-$(CONFIG_MACH_QNAPTS)  += qnap_libiscsi.o
+obj-$(CONFIG_VIRTUAL_DISK) += qnap_virtual_disk.o qnap_virtual.o
+obj-$(CONFIG_VIRTUAL_JBOD) += qnap_virtual_jbod.o qnap_sg.o qnap_sd.o qnap_virtual.o

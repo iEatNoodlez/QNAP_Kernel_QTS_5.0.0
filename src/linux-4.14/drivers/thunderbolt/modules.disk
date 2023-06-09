@@ -1,0 +1,2 @@
+kernel/drivers/thunderbolt/thunderbolt.ko
+kernel/drivers/thunderbolt/icm/thunderbolt-icm.ko

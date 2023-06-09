@@ -1,0 +1,157 @@
+menu "Annapurna Labs Alpine PCIe Endpoint drivers"
+	depends on ARCH_ALPINE
+	depends on PCI_ENDPOINT
+	depends on OF
+
+config PCI_ALPINE_ENDPOINT
+	tristate "Annapurna Labs Alpine PCIe Endpoint Support"
+	depends on ARCH_ALPINE
+	depends on PCI_ENDPOINT
+	depends on OF
+
+config PCI_ALPINE_ENDPOINT_DISABLE_INTERRUPT_WITH_GPIO
+	depends on PCI_ALPINE_ENDPOINT
+	bool "Disable Interrupt function"
+
+config PCI_ALPINE_ENDPOINT_CPLD
+	depends on PCI_ALPINE_ENDPOINT_DISABLE_INTERRUPT_WITH_GPIO=n
+	default y if PCI_ALPINE_ENDPOINT
+	bool "support CPLD with SMbus in EP function"
+
+config PCI_ALPINE_ENDPOINT_DEBUG
+	tristate "Annapurna Labs Alpine PCIe Endpoint Debug Support"
+	depends on ARCH_ALPINE
+	depends on PCI_ENDPOINT
+	depends on OF
+
+config PCI_ALPINE_ENDPOINT_CABLE_DEBUG
+	tristate "Annapurna Labs Alpine PCIe Endpoint Cable Debug Support"
+	depends on ARCH_ALPINE
+	depends on PCI_ENDPOINT
+	depends on PCI_ALPINE_ENDPOINT_DEBUG
+	depends on OF
+
+config PCIE_KCONF_ENDPOINT_ID
+	bool "Kernel Config EP Identity"
+	depends on ARCH_ALPINE
+	depends on PCI_ENDPOINT
+	help
+	  This is default using device tree, but you can KCONF setting EP0 ~ EP3 identity infomation
+
+config PCIE_EP0_ENDPOINT_ID
+	bool "Enable EP0 Identity Configure"
+	depends on PCIE_KCONF_ENDPOINT_ID
+
+config PCIE_EP0_VENDOR_ID_ADDR
+	hex "Set EP0 Vendor ID address"
+	depends on PCIE_EP0_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP0_DEVICE_ID_ADDR
+	hex "Set EP0 Device ID address"
+	depends on PCIE_EP0_ENDPOINT_ID
+	default 0xffff
+
+config PCIE_EP0_REVISION_ID_ADDR
+	hex "Set EP0 Revision ID address"
+	depends on PCIE_EP0_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP0_SUBSYSTEM_VENDOR_ID_ADDR
+	hex "Set EP0 Subsystem Vendor ID address"
+	depends on PCIE_EP0_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP0_SUBSYSTEM_DEVICE_ID_ADDR
+	hex "Set EP0 Subsystem Device ID address"
+	depends on PCIE_EP0_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP1_ENDPOINT_ID
+	bool "Enable EP1 Identity Configure"
+	depends on PCIE_KCONF_ENDPOINT_ID
+
+config PCIE_EP1_VENDOR_ID_ADDR
+	hex "Set EP1 Vendor ID address"
+	depends on PCIE_EP1_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP1_DEVICE_ID_ADDR
+	hex "Set EP1 Device ID address"
+	depends on PCIE_EP1_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP1_REVISION_ID_ADDR
+	hex "Set EP1 Revision ID address"
+	depends on PCIE_EP1_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP1_SUBSYSTEM_VENDOR_ID_ADDR
+	hex "Set EP1 Subsystem Vendor ID address"
+	depends on PCIE_EP1_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP1_SUBSYSTEM_DEVICE_ID_ADDR
+	hex "Set EP1 Subsystem Device ID address"
+	depends on PCIE_EP1_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP2_ENDPOINT_ID
+	bool "Enable EP2 Identity Configure"
+	depends on PCIE_KCONF_ENDPOINT_ID
+
+config PCIE_EP2_VENDOR_ID_ADDR
+	hex "Set EP2 Vendor ID address"
+	depends on PCIE_EP2_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP2_DEVICE_ID_ADDR
+	hex "Set EP2 Device ID address"
+	depends on PCIE_EP2_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP2_REVISION_ID_ADDR
+	hex "Set EP2 Revision ID address"
+	depends on PCIE_EP2_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP2_SUBSYSTEM_VENDOR_ID_ADDR
+	hex "Set EP2 Subsystem Vendor ID address"
+	depends on PCIE_EP2_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP2_SUBSYSTEM_DEVICE_ID_ADDR
+	hex "Set EP2 Subsystem Device ID address"
+	depends on PCIE_EP2_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP3_ENDPOINT_ID
+	bool "Enable EP3 Identity Configure"
+	depends on PCIE_KCONF_ENDPOINT_ID
+
+config PCIE_EP3_VENDOR_ID_ADDR
+	hex "Set EP3 Vendor ID address"
+	depends on PCIE_EP3_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP3_DEVICE_ID_ADDR
+	hex "Set EP3 Device ID address"
+	depends on PCIE_EP3_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP3_REVISION_ID_ADDR
+	hex "Set EP3 Revision ID address"
+	depends on PCIE_EP3_ENDPOINT_ID
+	default 0x0000
+
+config PCIE_EP3_SUBSYSTEM_VENDOR_ID_ADDR
+	hex "Set EP3 Subsystem Vendor ID address"
+	depends on PCIE_EP3_ENDPOINT_ID
+	default 0x1baa
+
+config PCIE_EP3_SUBSYSTEM_DEVICE_ID_ADDR
+	hex "Set EP3 Subsystem Device ID address"
+	depends on PCIE_EP3_ENDPOINT_ID
+	default 0x0000
+
+endmenu

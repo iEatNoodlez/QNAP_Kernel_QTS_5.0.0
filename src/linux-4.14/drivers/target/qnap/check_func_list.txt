@@ -1,0 +1,12 @@
+#
+# This file is used to check all functions (static or static inline) declared 
+# by other layer and used for iscsi code but they can't be solved by WEAK symbol 
+# mechanism during to compile / link them
+#
+# format:
+#
+# check_list:<src>:<pattern>:<compile_opt>
+#
+check_list:include/linux/blkdev.h:static inline void *rq_get_thin_hook(struct request_queue *q):__HAVE_RQ_GET_THIN_HOOK__
+
+

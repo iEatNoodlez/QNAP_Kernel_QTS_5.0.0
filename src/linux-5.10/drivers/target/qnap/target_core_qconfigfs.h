@@ -1,0 +1,27 @@
+#ifndef TARGET_CORE_QCONFIGFS_H
+#define TARGET_CORE_QCONFIGFS_H
+
+extern struct configfs_attribute attr_emulate_v_sup;
+extern struct configfs_attribute attr_emulate_fua_write;
+extern struct configfs_attribute attr_productid;
+
+extern struct configfs_attribute attr_lun_index;
+
+#ifdef SUPPORT_TP
+extern struct configfs_attribute attr_tp_threshold_enable;
+extern struct configfs_attribute attr_tp_threshold_percent;
+extern struct configfs_attribute attr_allocated;
+#endif
+
+extern struct configfs_attribute target_dev_attr_provision;
+extern struct configfs_attribute target_dev_attr_naa_vendor;
+extern struct configfs_attribute target_dev_attr_naa_code;
+extern struct configfs_attribute target_dev_attr_qlbs;
+extern struct configfs_attribute target_dev_attr_wt;
+extern struct configfs_attribute target_dev_attr_zc;
+extern struct configfs_attribute target_dev_attr_read_deletable;
+
+extern struct configfs_attribute target_dev_attr_qfbc_supported;
+extern struct configfs_attribute target_dev_attr_qfbc_enable;
+
+#endif

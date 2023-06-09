@@ -1,0 +1,41 @@
+#
+# This is the SOURCES file for building CBios libraries
+#
+TARGETNAME=CBiosMonitor
+TARGETTYPE=LIBRARY
+
+#
+#
+#
+#
+
+USE_MAPSYM=1
+
+#
+# setup visualC++ source browsing
+#
+BROWSERFILE=$(TARGETNAME).bsc -n
+
+
+!IFNDEF MSC_WARNING_LEVEL
+MSC_WARNING_LEVEL=/W3 /WX
+!ENDIF
+
+!IF "$(DDKBUILDENV)" == "fre" || "$(DDKBUILDENV)" == "free"
+MSC_OPTIMIZATION=$(MSC_OPTIMIZATION) /Ob2 /O1
+!endif
+
+INCLUDES=$(DDK_INC_PATH);$(WDM_INC_PATH)
+INCLUDES=$(INCLUDES);.;..;..\..;..\..\Port;
+
+
+SOURCES=CBiosDSIPanel.c \
+        CBiosHX8392A.c  \
+        CBiosNT35595.c \
+        CBiosR63319.c \
+        CBiosR63417.c  \
+        ..\CBiosCRTMonitor.c \
+        ..\CBiosDPMonitor.c \
+        ..\CBiosHDMIMonitor.c	\
+        ..\CBiosEDPPanel.c	\
+        

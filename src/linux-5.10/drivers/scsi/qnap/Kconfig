@@ -1,0 +1,43 @@
+#
+# Kernel configuration file for the QNAP scsi feature
+#
+# Copyright (C) 2018 QNAP Inc.  All rights reserved.
+#
+# Authors:
+#   QNAP iscsi team
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public version 2 License as
+# published by the Free Software Foundation
+
+menu "QNAP SCSI device support"
+
+config VIRTUAL_DISK
+	bool "Virtual DISK support"
+	default n
+	depends on MACH_QNAPTS
+	help
+	Provide VIRTUAL DISK Feature
+
+config VIRTUAL_DISK_EX
+	bool "Virtual DISK Extention"
+	default n
+	depends on VIRTUAL_DISK
+	help
+	Extention for VIRTUAL DISK Feature
+
+config VIRTUAL_JBOD
+	bool "Virtual JBOD support"
+	default n
+	depends on MACH_QNAPTS
+	help
+	Provide VIRTUAL_JBOD Feature
+
+config VIRTUAL_JBOD_DEBUG
+	bool "Virtual JBOD Debug support"
+	default n
+	depends on VIRTUAL_JBOD
+	help
+	Provide VIRTUAL_JBOD DEBUG Messages
+
+endmenu
